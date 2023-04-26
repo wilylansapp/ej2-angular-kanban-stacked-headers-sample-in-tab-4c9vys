@@ -1,0 +1,50 @@
+<div class="control-section e-tab-section">
+  <div class="e-sample-resize-container">
+    <ejs-tab id="element">
+      <e-tabitems>
+        <e-tabitem>
+          <ng-template #headerText>
+            <div>Tabla</div>
+          </ng-template>
+          <ng-template #content>
+            <div style="display:flex; width:100% ">
+              <ejs-kanban
+                keyField="Status"
+                [dataSource]="data"
+                [cardSettings]="cardSettings"
+              >
+                <e-columns>
+                  <e-column
+                    *ngFor="let item of datacolumn"
+                    [headerText]="item.Status"
+                    [keyField]="item.Status"
+                  ></e-column>
+                </e-columns>
+              </ejs-kanban>
+              <div class="input-container">
+                <input
+                  type="text"
+                  class="custom-input"
+                  [(ngModel)]="inputValue"
+                  placeholder="Ajouter une colonne +"
+                />
+                <div
+                  class="icon-container"
+                  [ngClass]="{ 'has-value': inputValue.length > 0 }"
+                  (click)="addColumn()"
+                >
+                  <button
+                    [ngClass]="{ 'has-value': inputValue.length > 0 }"
+                    class="btn-add-column"
+                  >
+                    <i class="fas fa-plus">+</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </e-tabitem>
+      </e-tabitems>
+    </ejs-tab>
+  </div>
+</div>
